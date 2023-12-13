@@ -1,9 +1,37 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7ybo6q8s6g67"]
+[gd_scene load_steps=13 format=3 uid="uid://c7ybo6q8s6g67"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_peme7"]
 [ext_resource type="Texture2D" uid="uid://bj61m1jn0truc" path="res://player.png" id="2_qw3nx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7pu3s"]
+atlas = ExtResource("2_qw3nx")
+region = Rect2(0, 0, 24, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8gck"]
+atlas = ExtResource("2_qw3nx")
+region = Rect2(144, 0, 24, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nsfc"]
+atlas = ExtResource("2_qw3nx")
+region = Rect2(24, 0, 24, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_or3cs"]
+atlas = ExtResource("2_qw3nx")
+region = Rect2(48, 0, 24, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pg0e3"]
+atlas = ExtResource("2_qw3nx")
+region = Rect2(72, 0, 24, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lj7t"]
+atlas = ExtResource("2_qw3nx")
+region = Rect2(96, 0, 24, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mtdl"]
+atlas = ExtResource("2_qw3nx")
+region = Rect2(120, 0, 24, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnl18"]
 atlas = ExtResource("2_qw3nx")
 region = Rect2(0, 0, 24, 20)
 
@@ -16,10 +44,41 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8gck")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nsfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_or3cs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pg0e3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lj7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mtdl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnl18")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_45csi"]
-size = Vector2(16, 16)
+size = Vector2(8, 15)
 
 [node name="Player" type="CharacterBody2D"]
 floor_constant_speed = true
@@ -27,8 +86,10 @@ floor_snap_length = 2.0
 script = ExtResource("1_peme7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_64mxe")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7.5)
 shape = SubResource("RectangleShape2D_45csi")
